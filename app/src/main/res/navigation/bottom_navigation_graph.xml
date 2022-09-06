@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation_graph"
+    app:startDestination="@id/myChatsFragment">
+
+    <fragment
+        android:id="@+id/allChatsFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.allchats.AllChatsFragment"
+        android:label="fragment_all_chats"
+        tools:layout="@layout/fragment_all_chats" >
+        <action
+            android:id="@+id/action_allChatsFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_changeUserDataFragment"
+            app:destination="@id/changeUserDataFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_friendsListFragment"
+            app:destination="@id/friendsListFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_blackListFragment"
+            app:destination="@id/blackListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChatsFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.mychats.MyChatsFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_my_chats" >
+        <action
+            android:id="@+id/action_myChatsFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.feed.FeedFragment"
+        android:label="fragment_feed"
+        tools:layout="@layout/fragment_feed" />
+    <fragment
+        android:id="@+id/changeUserDataFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.changeUserData.ChangeUserDataFragment"
+        android:label="fragment_change_user_data"
+        tools:layout="@layout/fragment_change_user_data" >
+        <action
+            android:id="@+id/action_changeUserDataFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleChatFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.singleChat.SingleChatFragment"
+        android:label="single_chat_fragment"
+        tools:layout="@layout/single_chat_fragment" >
+        <action
+            android:id="@+id/action_singleChatFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+        <action
+            android:id="@+id/action_singleChatFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_singleChatFragment_to_graffitiFragment"
+            app:destination="@id/graffitiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFullScreenFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.imageFullScreen.ImageFullScreenFragment"
+        android:label="fragment_image_full_screen"
+        tools:layout="@layout/fragment_image_full_screen" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.userProfile.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendsListFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.friendsList.FriendsListFragment"
+        android:label="fragment_friends_list"
+        tools:layout="@layout/fragment_friends_list" >
+        <action
+            android:id="@+id/action_friendsListFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_friendsListFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.saved.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_savedFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blackListFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.blackList.BlackListFragment"
+        android:label="black_list_fragment"
+        tools:layout="@layout/black_list_fragment" >
+        <action
+            android:id="@+id/action_blackListFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_blackListFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/graffitiFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.graffiti.GraffitiFragment"
+        android:label="graffiti_fragment"
+        tools:layout="@layout/graffiti_fragment" />
+</navigation>

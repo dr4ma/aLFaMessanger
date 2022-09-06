@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_logo">200dp</dimen>
+    <dimen name="normal_corner_radius">20dp</dimen>
+    <dimen name="large_margin">30dp</dimen>
+    <dimen name="big_text_size">22sp</dimen>
+    <dimen name="normal_margin">16dp</dimen>
+    <dimen name="size_verification_figure">45dp</dimen>
+    <dimen name="toolbar_corner_radius">15dp</dimen>
+    <dimen name="height_toolbar">65dp</dimen>
+    <dimen name="normal_text_size">18sp</dimen>
+    <dimen name="min_text_size">13sp</dimen>
+    <dimen name="min_margin">10dp</dimen>
+    <dimen name="chat_icon">30dp</dimen>
+    <dimen name="corner_radius_messages">20dp</dimen>
+    <dimen name="ic_size_bottom_sheet">30dp</dimen>
+    <dimen name="icon_add_in_chat_size">60dp</dimen>
+    <dimen name="size_icons_graffiti">35dp</dimen>
+</resources>

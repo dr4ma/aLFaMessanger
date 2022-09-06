@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="big_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
+    </style>
+    <style name="normal_text">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+    <style name="label_small_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/min_text_size</item>
+        <item name="android:textColor">@color/colorGrey</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+    <style name="separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorSeparator</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/color_transparent</item>
+    </style>
+
+    <style name="style_size_messages_images">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxHeight">250dp</item>
+        <item name="android:maxWidth">300dp</item>
+        <item name="android:minWidth">80dp</item>
+        <item name="android:minHeight">80dp</item>
+    </style>
+
+    <style name="add_in_chat_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/min_text_size</item>
+        <item name="android:layout_margin">@dimen/min_margin</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="add_in_chat_icon_style">
+        <item name="android:layout_width">@dimen/icon_add_in_chat_size</item>
+        <item name="android:layout_height">@dimen/icon_add_in_chat_size</item>
+    </style>
+
+    <style name="anim_popup">
+        <item name="android:windowEnterAnimation">@anim/nav_default_pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/nav_default_pop_exit_anim</item>
+    </style>
+
+    <style name="SwitchCompatStyle" >
+        <item name="thumbTint">@color/white</item>
+        <item name="trackTint">@color/switcher_color</item>
+    </style>
+
+    <style name="text_profile_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_margin">@dimen/min_margin</item>
+    </style>
+</resources>

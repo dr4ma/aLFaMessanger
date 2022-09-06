@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.fragments.graffiti.GraffitiFragment">
+
+    <com.example.alfamessanger.presentation.customViews.PaintView
+        android:id="@+id/drawing"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/container_tools_graffiti"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_tools_graffiti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/brush"
+                android:layout_width="@dimen/size_icons_graffiti"
+                android:layout_height="@dimen/size_icons_graffiti"
+                android:layout_marginTop="@dimen/min_margin"
+                android:layout_marginBottom="@dimen/min_margin"
+                android:src="@drawable/ic_brush"
+                app:tint="@color/textColor" />
+
+            <ImageView
+                android:id="@+id/erase"
+                android:layout_width="@dimen/size_icons_graffiti"
+                android:layout_height="@dimen/size_icons_graffiti"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:src="@drawable/ic_eraser"
+                app:tint="@color/textColor" />
+
+            <ImageView
+                android:id="@+id/sizeChange"
+                android:layout_width="@dimen/size_icons_graffiti"
+                android:layout_height="@dimen/size_icons_graffiti"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:src="@drawable/ic_tape"
+                app:tint="@color/textColor" />
+
+            <ImageView
+                android:id="@+id/changeColorBrush"
+                android:layout_width="@dimen/size_icons_graffiti"
+                android:layout_height="@dimen/size_icons_graffiti"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:src="@drawable/ic_palette"
+                app:tint="@color/textColor" />
+
+            <ImageView
+                android:id="@+id/changeColorBackGround"
+                android:layout_width="@dimen/size_icons_graffiti"
+                android:layout_height="@dimen/size_icons_graffiti"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:src="@drawable/ic_palette_back"
+                app:tint="@color/textColor" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/seekBarContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
+        android:background="@drawable/came_image_messages_style"
+        android:elevation="3dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/container_tools_graffiti"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekBarBrush"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/min_margin"
+            android:max="100"
+            android:progressTint="@color/colorPlayer"
+            android:thumbTint="@color/colorPlayer" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/return_last_action"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/normal_text_size"
+        app:tint="@color/textColor"
+        android:backgroundTint="@color/colorGreyBackground"
+        android:elevation="5dp"
+        android:src="@drawable/ic__return"
+        app:borderWidth="0dp"
+        app:fabCustomSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

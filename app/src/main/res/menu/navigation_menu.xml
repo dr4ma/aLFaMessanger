@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/feedFragment"
+        android:icon="@drawable/ic_megaphone"
+        android:title="@string/news"
+        />
+
+    <item
+        android:id="@+id/allChatsFragment"
+        android:icon="@drawable/ic_list"
+        android:title="@string/all_chats" />
+    <item
+        android:id="@+id/myChatsFragment"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/my_chats" />
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_user"
+        android:title="@string/account" />
+
+</menu>
