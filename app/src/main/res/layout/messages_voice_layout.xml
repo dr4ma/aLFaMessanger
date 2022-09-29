@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bloc_received_messages_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
+        android:background="@drawable/received_messages_style"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/play_voice_received"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/min_margin"
+            android:background="@drawable/ic_plays"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/stop_voice_received"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/min_margin"
+            android:background="@drawable/ic_stop"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <rm.com.audiowave.AudioWaveView
+            android:id="@+id/waveReceived"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/min_margin"
+            app:animateExpansion="false"
+            app:chunkHeight="24dp"
+            app:chunkRadius="1dp"
+            app:chunkSpacing="1dp"
+            app:chunkWidth="3dp"
+            app:minChunkHeight="2dp"
+            app:touchable="false"
+            app:waveColor="@color/colorPlayer"
+            app:layout_constraintStart_toEndOf="@id/play_voice_received"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/chat_received_message_voice_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="start"
+            android:padding="8dp"
+            android:paddingStart="5dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp"
+            tools:text="21:45"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/waveReceived"/>
+        <TextView
+            android:id="@+id/received_voice_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="start"
+            android:padding="8dp"
+            android:paddingStart="5dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp"
+            tools:text="00:03"
+            app:layout_constraintStart_toEndOf="@id/play_voice_received"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bloc_came_messages_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
+        android:background="@drawable/came_messages_style"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/play_voice_came"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/min_margin"
+            android:background="@drawable/ic_plays"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <rm.com.audiowave.AudioWaveView
+            android:id="@+id/waveCame"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            app:animateExpansion="false"
+            android:layout_margin="@dimen/min_margin"
+            app:chunkHeight="24dp"
+            app:chunkRadius="1dp"
+            app:chunkSpacing="1dp"
+            app:chunkWidth="3dp"
+            app:minChunkHeight="2dp"
+            app:touchable="true"
+            app:waveColor="@color/colorPlayer"
+            app:layout_constraintStart_toEndOf="@id/play_voice_came"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/stop_voice_came"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/min_margin"
+            android:background="@drawable/ic_stop"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/chat_came_message_time_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="start"
+            android:padding="8dp"
+            android:paddingStart="5dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp"
+            tools:text="21:45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/waveCame"/>
+
+        <TextView
+            android:id="@+id/came_voice_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="start"
+            android:padding="8dp"
+            android:paddingStart="5dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="11sp"
+            tools:text="00:03"
+            app:layout_constraintStart_toEndOf="@id/play_voice_came"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deletingMassage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:background="@color/color_transparent_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

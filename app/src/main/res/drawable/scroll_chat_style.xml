@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <ripple android:color="@color/colorGreyBackground">
+        <item>
+            <shape android:shape="oval">
+                <solid android:color="@color/colorGreyBackground" />
+                <size
+                    android:width="30dp"
+                    android:height="29dp" />
+                <stroke android:width="3dp"
+                    android:color="@color/colorGreyStroke"
+                    />
+            </shape>
+        </item>
+        <item
+            android:drawable="@drawable/ic_down_arrow"
+            android:gravity="center" />
+    </ripple>
+</inset>

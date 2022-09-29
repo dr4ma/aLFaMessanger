@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.mychats.MyChatsFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_chats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        android:layout_margin="10dp"
+        tools:listitem="@layout/item_my_chats_recycler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/chats_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/ic_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/no_chats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/no_chats" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/min_margin"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/no_chats"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/normal_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/no_channels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/no_channels" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/min_margin"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/no_channels"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/normal_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_floating_btn"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        app:fabCustomSize="58dp"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/white"
+        android:backgroundTint="@color/sendMessageColor"
+        android:focusable="true"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/normal_margin" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_chat"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:fabCustomSize="55dp"
+        app:srcCompat="@drawable/ic_person"
+        app:tint="@color/white"
+        android:backgroundTint="@color/sendMessageColor"
+        android:focusable="true"
+        android:visibility="invisible"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="@id/main_floating_btn"
+        app:layout_constraintStart_toStartOf="@id/main_floating_btn"
+        app:layout_constraintBottom_toTopOf="@id/main_floating_btn"
+        android:layout_marginBottom="@dimen/min_margin" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_channel"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:fabCustomSize="55dp"
+        app:srcCompat="@drawable/ic_channel"
+        app:tint="@color/white"
+        android:visibility="invisible"
+        android:backgroundTint="@color/sendMessageColor"
+        android:focusable="true"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="@id/create_chat"
+        app:layout_constraintStart_toStartOf="@id/create_chat"
+        app:layout_constraintBottom_toTopOf="@id/create_chat"
+        android:layout_marginBottom="@dimen/min_margin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "922002725616",
+    "firebase_url": "https://alfamessanger-default-rtdb.firebaseio.com",
+    "project_id": "alfamessanger",
+    "storage_bucket": "alfamessanger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922002725616:android:286e5f1727289f855fc035",
+        "android_client_info": {
+          "package_name": "com.example.alfamessanger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922002725616-8cad4qe4acnvgus6cncs42la14q4l839.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfamessanger",
+            "certificate_hash": "faca8bda269a819bfb3d53fb337360bc29f3af45"
+          }
+        },
+        {
+          "client_id": "922002725616-aj91mfcoe9q91jl05ode798dp1dd2o6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxi4Je_fajCNpJe5KP73Z0xgPgV8YKatA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922002725616-aj91mfcoe9q91jl05ode798dp1dd2o6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

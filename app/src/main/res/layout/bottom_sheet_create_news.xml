@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_chat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/large_margin"
+    android:paddingBottom="@dimen/large_margin"
+    android:paddingEnd="@dimen/large_margin"
+    android:background="@drawable/content_style_top_corners">
+
+    <ImageView
+        android:id="@+id/line_chat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_line_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/file_channel"
+        android:background="@drawable/file_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_chat"
+        style="@style/add_in_chat_icon_style"
+        android:layout_marginEnd="@dimen/large_margin"/>
+
+    <TextView
+        style="@style/add_in_chat_text_style"
+        android:text="@string/file"
+        app:layout_constraintEnd_toEndOf="@id/file_channel"
+        app:layout_constraintStart_toStartOf="@id/file_channel"
+        app:layout_constraintTop_toBottomOf="@id/file_channel" />
+
+    <ImageView
+        android:id="@+id/gallery_channel"
+        android:background="@drawable/gallery_chat"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/large_margin"
+        app:layout_constraintTop_toBottomOf="@id/line_chat"
+        style="@style/add_in_chat_icon_style" />
+
+    <TextView
+        style="@style/add_in_chat_text_style"
+        android:text="@string/gallery"
+        app:layout_constraintEnd_toEndOf="@id/gallery_channel"
+        app:layout_constraintStart_toStartOf="@id/gallery_channel"
+        app:layout_constraintTop_toBottomOf="@id/gallery_channel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

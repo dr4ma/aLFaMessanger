@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/min_margin"
+    android:background="@drawable/item_background_blacklist_style"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/box_account_blacklist_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photo_user_black_list"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/normal_margin"
+        android:src="@drawable/default_user"/>
+
+    <TextView
+        android:id="@+id/name_user_black_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="NickName"
+        style="@style/normal_text"
+        android:layout_margin="@dimen/min_margin"
+        app:layout_constraintStart_toEndOf="@id/photo_user_black_list"
+        app:layout_constraintTop_toTopOf="@id/photo_user_black_list"
+        />
+
+    <TextView
+        android:id="@+id/status_user_black_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="В сети"
+        android:textColor="@color/statusColor"
+        app:layout_constraintStart_toStartOf="@id/name_user_black_list"
+        app:layout_constraintTop_toBottomOf="@id/name_user_black_list"
+        />
+
+    <ImageView
+        android:id="@+id/go_to_chat_black_list"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/ic_chat_bubble_icon"
+        app:layout_constraintEnd_toStartOf="@id/out_from_blacklist"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/normal_margin"
+        />
+
+        <ImageView
+            android:id="@+id/out_from_blacklist"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_hashtag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/normal_margin"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tittle_black_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/normal_margin"
+        android:textColor="@color/textColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/account_info"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

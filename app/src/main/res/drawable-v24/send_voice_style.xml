@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <ripple android:color="@color/colorGreyBackground">
+        <item>
+            <shape android:shape="oval">
+                <solid android:color="@color/sendMessageColor" />
+                <size
+                    android:width="30dp"
+                    android:height="29dp" />
+            </shape>
+        </item>
+        <item android:drawable="@drawable/ic_microphone_white"
+            android:gravity="center"
+            android:width="12dp"
+            android:height="12dp"
+            />
+    </ripple>
+</inset>

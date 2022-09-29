@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.fragments.channel.ChannelFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_channel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/min_margin"
+        android:layout_marginEnd="@dimen/min_margin"
+        android:layout_marginTop="@dimen/min_margin"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@id/main_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/channels_feed_item" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/min_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/add_create_news"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/ic_add"
+            android:scaleType="center"
+            android:backgroundTint="@color/colorPlayer"
+            app:layout_constraintTop_toTopOf="@id/text_news_channel"
+            />
+
+        <EditText
+            android:id="@+id/text_news_channel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box_content_style"
+            android:gravity="start|top"
+            android:maxLines="3"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="@dimen/normal_margin"
+            android:paddingEnd="@dimen/normal_margin"
+            android:hint="@string/enter_news"
+            android:layout_marginStart="@dimen/min_margin"
+            android:layout_marginEnd="@dimen/min_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/create_news_channel"
+           app:layout_constraintStart_toEndOf="@id/add_create_news" />
+
+        <ImageView
+            android:id="@+id/create_news_channel"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_right_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/text_news_channel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_news_channel"
+            app:layout_constraintTop_toTopOf="@id/text_news_channel" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="@dimen/min_margin"
+            app:cardCornerRadius="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/text_news_channel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/add_image_create_news"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:background="@drawable/files_feed_style"
+                android:scaleType="center" />
+
+            <ImageView
+                android:id="@+id/delete_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/min_margin"
+                android:background="@drawable/ic_clear"
+                android:backgroundTint="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linear_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/min_margin"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="@dimen/min_margin"
+            android:background="@drawable/files_feed_style"
+            app:layout_constraintBottom_toTopOf="@id/card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/file_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_file"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/file_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/file_was_added"
+                android:layout_marginStart="@dimen/min_margin"
+                android:textSize="@dimen/normal_text_size"
+                android:textStyle="italic"
+                android:singleLine="true"
+                android:layout_marginEnd="@dimen/min_margin"
+                app:layout_constraintEnd_toStartOf="@id/delete_file"
+                app:layout_constraintStart_toEndOf="@id/file_icon"
+                app:layout_constraintTop_toTopOf="@id/file_icon"
+                app:layout_constraintBottom_toBottomOf="@id/file_icon"
+                />
+
+            <ImageView
+                android:id="@+id/delete_file"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_margin="@dimen/min_margin"
+                android:background="@drawable/ic_clear"
+                android:backgroundTint="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

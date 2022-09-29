@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.account.AccountFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/qw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGreyBackground"
+        tools:context="com.example.AlfaChat.ui.fragments.SettingsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/account_header_bloc"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/header_content_style"
+            app:layout_constraintBottom_toTopOf="@id/box_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/account_user_photo"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/default_user"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/account_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progress_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@id/account_user_photo"
+                app:layout_constraintTop_toTopOf="@id/account_user_photo"
+                app:layout_constraintBottom_toBottomOf="@id/account_user_photo"
+                app:layout_constraintEnd_toEndOf="@id/account_user_photo"
+                android:indeterminateTint="@color/colorAccentDark"
+                />
+
+            <TextView
+                android:id="@+id/account_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="@dimen/normal_text_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/account_user_photo"
+                app:layout_constraintTop_toTopOf="@id/account_user_photo"
+                tools:text="@string/name_label" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:translationZ="5dp"
+                android:visibility="visible"
+                app:trackThickness="17dp"
+                app:indicatorColor="@color/colorGreyBackground"
+                app:trackColor="@color/trackColor"
+                app:trackCornerRadius="5dp"
+                app:layout_constraintStart_toStartOf="@id/account_name"
+                app:layout_constraintTop_toTopOf="@id/account_name"
+                />
+
+            <TextView
+                android:id="@+id/account_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/statusColor"
+                android:textSize="@dimen/min_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/account_user_photo"
+                app:layout_constraintTop_toBottomOf="@id/account_name"
+                android:text="Online" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/box_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/box_content_style"
+            app:layout_constraintTop_toBottomOf="@id/account_header_bloc">
+
+            <TextView
+                android:id="@+id/account_text_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/general_settings"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/normal_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/box_content" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_number_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ripple_effect"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_text_account">
+
+                <TextView
+                    android:id="@+id/account_phone_number"
+                    style="@style/normal_text"
+                    android:layout_marginBottom="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/default_number" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_phone"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:translationZ="5dp"
+                    android:visibility="visible"
+                    app:trackThickness="17dp"
+                    app:indicatorColor="@color/colorGreyBackground"
+                    app:trackColor="@color/trackColor"
+                    app:trackCornerRadius="5dp"
+                    app:layout_constraintStart_toStartOf="@id/account_phone_number"
+                    app:layout_constraintTop_toTopOf="@id/account_phone_number"
+                    />
+
+                <TextView
+                    android:id="@+id/account_label_phone_number"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/change_number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_phone_number" />
+
+                <View
+                    style="@style/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_label_phone_number" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_number_phone">
+
+                <TextView
+                    android:id="@+id/account_nickname"
+                    style="@style/normal_text"
+                    android:layout_marginBottom="40dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/account_btn_change_user_name"
+                    tools:text="@string/name_label" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_nickname"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:translationZ="5dp"
+                    android:visibility="visible"
+                    app:trackThickness="17dp"
+                    app:indicatorColor="@color/colorGreyBackground"
+                    app:trackColor="@color/trackColor"
+                    app:trackCornerRadius="5dp"
+                    app:layout_constraintStart_toStartOf="@id/account_nickname"
+                    app:layout_constraintTop_toTopOf="@id/account_nickname"
+                    />
+
+                <TextView
+                    android:id="@+id/account_label_user_name"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/login"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_nickname" />
+
+                <View
+                    style="@style/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_label_user_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_user_name">
+
+                <TextView
+                    android:id="@+id/account_bio"
+                    style="@style/normal_text"
+                    android:layout_marginBottom="40dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/bio_label" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_bio"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:translationZ="5dp"
+                    android:visibility="visible"
+                    app:trackThickness="17dp"
+                    app:indicatorColor="@color/colorGreyBackground"
+                    app:trackColor="@color/trackColor"
+                    app:trackCornerRadius="5dp"
+                    app:layout_constraintStart_toStartOf="@id/account_bio"
+                    app:layout_constraintTop_toTopOf="@id/account_bio"
+                    />
+                <TextView
+                    android:id="@+id/account_label_bio"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/bio_change"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_bio" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_bio" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/box_content_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/box_content_style"
+            app:layout_constraintTop_toBottomOf="@id/box_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/account_text_account_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/other_settings"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/normal_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/box_content_other" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ripple_effect"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_text_account_other">
+
+                <TextView
+                    android:id="@+id/account_label_theme"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/settings_theme"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_label_theme" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_settings_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:checked="false"
+                    style="@style/SwitchCompatStyle"
+                    app:layout_constraintBottom_toBottomOf="@id/account_label_theme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/account_label_theme"
+                    />
+
+                <View
+                    style="@style/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_label_theme" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_theme">
+
+                <TextView
+                    android:id="@+id/account_language"
+                    style="@style/normal_text"
+                    android:layout_marginBottom="40dp"
+                    android:text="@string/language_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/account_label_language"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/language_change"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_language" />
+
+                <View
+                    style="@style/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_label_language" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:background="@drawable/ripple_effect"
+                android:clickable="false"
+                android:focusable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_language">
+
+                <TextView
+                    android:id="@+id/account_status_turn"
+                    style="@style/normal_text"
+                    android:layout_marginBottom="40dp"
+                    tools:text="Режим невидимки включен"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/account_label_status"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/on_off_hide_mode"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_status_turn" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_settings_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:checked="false"
+                    app:layout_constraintBottom_toBottomOf="@id/account_label_status"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/account_label_status"
+                    style="@style/SwitchCompatStyle"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_status" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/account_change_photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="30dp"
+            android:elevation="5dp"
+            android:src="@drawable/ccamera"
+            app:layout_constraintBottom_toTopOf="@id/box_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/account_header_bloc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
