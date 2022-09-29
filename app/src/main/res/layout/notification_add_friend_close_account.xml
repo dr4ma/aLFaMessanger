@@ -14,59 +14,97 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/name_user_notification"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/min_margin"
-        android:textColor="@color/sendMessageColor"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="@id/close_add_label"
-        app:layout_constraintStart_toEndOf="@id/close_add_label"
-        app:layout_constraintTop_toTopOf="@id/close_add_label"
-        tools:text="Gogogo" />
-
-    <TextView
-        android:id="@+id/close_add_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/min_margin"
-        android:text="Заявка в друзья от"
-        android:textColor="@color/textColor"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@id/photo_user_notification_close_add_friend"
+        android:layout_marginStart="@dimen/min_margin"
         app:layout_constraintStart_toEndOf="@id/photo_user_notification_close_add_friend"
-        app:layout_constraintTop_toTopOf="@id/photo_user_notification_close_add_friend" />
+        app:layout_constraintTop_toTopOf="@id/photo_user_notification_close_add_friend"
+        app:layout_constraintBottom_toBottomOf="@id/photo_user_notification_close_add_friend">
 
-    <TextView
+        <TextView
+            android:id="@+id/name_user_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/min_margin"
+            android:singleLine="true"
+            android:textColor="@color/sendMessageColor"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/close_add_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/close_add_label"
+            app:layout_constraintTop_toTopOf="@id/close_add_label"
+            tools:text="Gogogo" />
+
+        <TextView
+            android:id="@+id/close_add_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Заявка в друзья от"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/time_close_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="3ч"
+            android:textSize="@dimen/min_text_size"
+            android:textColor="@color/statusColor"
+            app:layout_constraintStart_toStartOf="@id/close_add_label"
+            app:layout_constraintTop_toBottomOf="@id/close_add_label"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ago"
+            android:textSize="@dimen/min_text_size"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/statusColor"
+            app:layout_constraintStart_toEndOf="@id/time_close_account"
+            app:layout_constraintTop_toTopOf="@id/time_close_account"
+            app:layout_constraintBottom_toBottomOf="@id/time_close_account" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/accept_friend"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="@dimen/normal_margin"
         android:layout_marginBottom="@dimen/normal_margin"
+        android:backgroundTint="@color/sendMessageColor"
         android:text="@string/accept_friend"
-        android:textColor="@color/sendMessageColor"
-        android:textSize="@dimen/normal_text_size"
+        android:textColor="@color/white"
+        android:textSize="@dimen/min_text_size"
         android:textStyle="bold"
+        app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/photo_user_notification_close_add_friend" />
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/disable_friend"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_margin"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="45dp"
         android:layout_marginBottom="@dimen/normal_margin"
+        android:backgroundTint="@color/sendMessageColor"
         android:text="@string/disable_friend"
-        android:textColor="@color/sendMessageColor"
-        android:textSize="@dimen/normal_text_size"
+        android:textColor="@color/white"
+        android:textSize="@dimen/min_text_size"
         android:textStyle="bold"
+        app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/photo_user_notification_close_add_friend" />

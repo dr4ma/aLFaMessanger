@@ -8,6 +8,7 @@ import com.example.alfamessanger.R
 import com.example.alfamessanger.presentation.fragments.notifications.notificationRecyclerView.views.NotificationView
 import com.example.alfamessanger.utills.APP_ACTIVITY_MAIN
 import com.example.alfamessanger.utills.downloadAndSetImage
+import com.example.alfamessanger.utills.toTimeDifference
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.messages_file_layout.view.*
 import kotlinx.android.synthetic.main.notification_friend_add_open_account.view.*
@@ -17,6 +18,7 @@ class HolderAddFriendOpenAccount(view: View) : RecyclerView.ViewHolder(view),
 
     private val photoUser: CircleImageView = view.photo_user_notification_open_add_friend
     private val nameUser: TextView = view.name_user_notification
+    private val time: TextView = view.time_open_account
 
     override fun drawNotification(view: NotificationView) {
         if (view.iconUrl != "") {
@@ -30,6 +32,9 @@ class HolderAddFriendOpenAccount(view: View) : RecyclerView.ViewHolder(view),
             )
         }
         nameUser.text = view.userFrom
+        toTimeDifference(view.timeStamp.toString().toLong()){
+            time.text = it
+        }
     }
 
     override fun onAttach(view: NotificationView) {

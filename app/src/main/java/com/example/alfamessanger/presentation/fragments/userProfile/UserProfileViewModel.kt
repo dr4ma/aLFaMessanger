@@ -34,6 +34,14 @@ class UserProfileViewModel @Inject constructor(
         }
     }
 
+    fun sendNotificationPrivateAccountApp(friendModel: UserModel, onSuccess: () -> Unit){
+        viewModelScope.launch {
+            notificationAppUseCase.sendNotificationPrivateAccountApp(friendModel){
+                onSuccess()
+            }
+        }
+    }
+
     fun checkFriendOrNot(friendModel: UserModel, onSuccess: (result: Boolean) -> Unit) {
         userProfileUseCase.checkFriendOrNot(friendModel) {
             onSuccess(it)

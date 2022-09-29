@@ -67,6 +67,44 @@ class UserProfileFragment : Fragment() {
                     )
                 )
             }
+
+            mViewModel.checkFriendOrNot(mUserModel) {
+                checkFriend = it
+                if (checkFriend) {
+                    addInFriendLabel.text = getString(R.string.remove_from_friends)
+                } else {
+                    addInFriendLabel.text = getString(R.string.add_in_friend)
+                }
+
+                if (mUserModel.privateAccount && !checkFriend) {
+                    userStatusProfile.text = mUserModel.status
+                    userNameProfile.text = mUserModel.name
+                    profilePhone.text = getString(R.string.info_is_not_enabled)
+                    profileBio.text = getString(R.string.info_is_not_enabled)
+                    profileBio.setTypeface(null, Typeface.ITALIC)
+                    profileBio.setTextColor(APP_ACTIVITY_MAIN.resources.getColor(R.color.statusColor))
+                    profilePhone.setTypeface(null, Typeface.ITALIC)
+                    profilePhone.setTextColor(APP_ACTIVITY_MAIN.resources.getColor(R.color.statusColor))
+                    tintClipCall.visibility = View.VISIBLE
+                    tintClipVideo.visibility = View.VISIBLE
+                    tintClipSearch.visibility = View.VISIBLE
+                    tintClipMore.visibility = View.VISIBLE
+                    lockAccount.visibility = View.VISIBLE
+                    callProfile.isEnabled = false
+                    videoCallProfile.isEnabled = false
+                    searchProfile.isEnabled = false
+                    moreProfile.isEnabled = false
+                }
+                else if(mUserModel.privateAccount && checkFriend){
+                    lockAccount.visibility = View.VISIBLE
+                    userStatusProfile.text = mUserModel.status
+                    userNameProfile.text = mUserModel.name
+                    profilePhone.text = mUserModel.phone
+                    profileBio.text = mUserModel.bio
+                }
+            }
+
+
             mViewModel.checkForBlockMe(mUserModel) { blockedMe ->
                 if (blockedMe) {
                     userStatusProfile.text = mUserModel.status
@@ -93,18 +131,12 @@ class UserProfileFragment : Fragment() {
                     addInFavorites.isEnabled = false
                     addReport.isEnabled = false
                 } else {
-                    userStatusProfile.text = mUserModel.status
-                    userNameProfile.text = mUserModel.name
-                    profilePhone.text = mUserModel.phone
-                    profileBio.text = mUserModel.bio
-                }
-            }
-            mViewModel.checkFriendOrNot(mUserModel) {
-                checkFriend = it
-                if (checkFriend) {
-                    addInFriendLabel.text = getString(R.string.remove_from_friends)
-                } else {
-                    addInFriendLabel.text = getString(R.string.add_in_friend)
+                    if (!mUserModel.privateAccount) {
+                        userStatusProfile.text = mUserModel.status
+                        userNameProfile.text = mUserModel.name
+                        profilePhone.text = mUserModel.phone
+                        profileBio.text = mUserModel.bio
+                    }
                 }
             }
             mViewModel.checkBlockOrNot(mUserModel) {
@@ -129,20 +161,34 @@ class UserProfileFragment : Fragment() {
             }
 
             addInFriend.setOnClickListener {
-                if (checkFriend) {
-                    mViewModel.deleteFromFriends(mUserModel) {
-                        addInFriendLabel.text = getString(R.string.add_in_friend)
-                        checkFriend = false
+                if (mUserModel.privateAccount) {
+                    if(checkFriend){
+                        mViewModel.deleteFromFriends(mUserModel) {
+                            addInFriendLabel.text = getString(R.string.add_in_friend)
+                            checkFriend = false
+                        }
+                    }
+                    else{
+                        mViewModel.sendNotificationPrivateAccountApp(mUserModel) {
+                            showSnackBarLong(it, getString(R.string.add_in_friend_private_account), R.color.colorGreen)
+                        }
                     }
                 } else {
-                    mViewModel.addInFriends(mUserModel) {
-                        mViewModel.sendNotification(
-                            mUserModel,
-                            USER.nickname,
-                            USER.name + " " + getString(R.string.add_in_friend_notification)
-                        )
-                        addInFriendLabel.text = getString(R.string.remove_from_friends)
-                        checkFriend = true
+                    if (checkFriend) {
+                        mViewModel.deleteFromFriends(mUserModel) {
+                            addInFriendLabel.text = getString(R.string.add_in_friend)
+                            checkFriend = false
+                        }
+                    } else {
+                        mViewModel.addInFriends(mUserModel) {
+                            mViewModel.sendNotification(
+                                mUserModel,
+                                USER.nickname,
+                                USER.name + " " + getString(R.string.add_in_friend_notification)
+                            )
+                            addInFriendLabel.text = getString(R.string.remove_from_friends)
+                            checkFriend = true
+                        }
                     }
                 }
             }

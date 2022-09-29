@@ -29,6 +29,22 @@ class NotificationAppRequests : NotificationAppRepository {
         }
     }
 
+    override fun sendNotificationPrivateAccountApp(
+        friendId: String,
+        notificationsMainModel: Map<String, Boolean>,
+        notificationModel: NotificationModel,
+        onSuccess: () -> Unit
+    ) {
+        DATABASE_REFERENCE.child(NODE_NOTIFICATIONS).child(friendId).updateChildren(notificationsMainModel).addOnSuccessListener {
+            DATABASE_REFERENCE.child(NODE_NOTIFICATIONS).child(friendId).child(
+                CHILD_NOTIFICATION_LIST).child(notificationModel.id).setValue(notificationModel).addOnSuccessListener {
+                onSuccess()
+            }.addOnFailureListener {
+                Log.e(TAG_CREATE_NOTIFICATION, it.message.toString())
+            }
+        }
+    }
+
     override fun getNotificationsList(onSuccess: (notificationMainModel: NotificationsMainModel) -> Unit) {
         DATABASE_REFERENCE.child(NODE_NOTIFICATIONS).child(UID).addListenerForSingleValueEvent(AppValueEventListener{
             if(it.exists()){

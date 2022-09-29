@@ -48,6 +48,7 @@ class AccountFragment : BaseFragment() {
         initListeners()
         initTheme()
         initStatus()
+        initPrivacyAccount()
     }
 
     private fun initListeners() {
@@ -120,6 +121,29 @@ class AccountFragment : BaseFragment() {
             else{
                 AppPreferences.setHideStatus(false)
                 mBinding.accountStatusTurn.text = getString(R.string.hide_mode_is_off)
+            }
+        }
+    }
+
+    private fun initPrivacyAccount(){
+        if(AppPreferences.getPrivateAccount()){
+            mBinding.switchSettingsPrivate.isChecked = true
+            mBinding.accountPrivateTurn.text = getString(R.string.private_account)
+        }
+        else{
+            mBinding.switchSettingsPrivate.isChecked = false
+            mBinding.accountPrivateTurn.text = getString(R.string.open_account)
+        }
+        mBinding.switchSettingsPrivate.setOnCheckedChangeListener { compoundButton, isChecked ->
+            if(isChecked){
+                AppPreferences.setPrivateAccount(true)
+                mBinding.accountPrivateTurn.text = getString(R.string.private_account)
+                mViewModel.setPrivacyAccount(true)
+            }
+            else{
+                AppPreferences.setPrivateAccount(false)
+                mBinding.accountPrivateTurn.text = getString(R.string.open_account)
+                mViewModel.setPrivacyAccount(false)
             }
         }
     }

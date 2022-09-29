@@ -31,6 +31,7 @@ class RegisterRequests : RegisterRepository {
                     name = UID,
                     status = DEFAULT_STATUS,
                     bio = "-",
+                    privateAccount = false,
                     nickname = "@"+UID.lowercase(
                         Locale.getDefault()
                     ),

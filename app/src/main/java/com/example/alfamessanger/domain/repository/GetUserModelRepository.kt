@@ -11,5 +11,6 @@ interface GetUserModelRepository {
     fun getOtherUserModel(id : String, onSuccess:(model : UserModel) -> Unit)
     fun saveNewUserData(mapNewData : Map<String, String>, onSuccess:() -> Unit)
     fun getAllUsers(onSuccess: () -> Unit)
+    fun setPrivacyAccount(map : Map<String, Boolean>)
     fun deleteListeners() {}
 }

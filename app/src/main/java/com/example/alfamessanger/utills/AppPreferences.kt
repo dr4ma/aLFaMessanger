@@ -9,6 +9,7 @@ object AppPreferences {
     private const val INIT_THEME = "theme"
     private const val INIT_STATUS = "status"
     private const val INIT_GRAFFITI = "graffiti"
+    private const val INIT_PRIVATE_ACCOUNT = "private_account"
     private const val INIT_ADAPTER = "adapter"
     private const val PREF = "preferences"
 
@@ -49,5 +50,13 @@ object AppPreferences {
 
     fun getAdapterMemory(): String {
         return mPreferences.getString(INIT_ADAPTER, ADAPTER_CHATS).toString()
+    }
+
+    fun setPrivateAccount(private : Boolean) {
+        mPreferences.edit().putBoolean(INIT_PRIVATE_ACCOUNT, private).apply()
+    }
+
+    fun getPrivateAccount(): Boolean {
+        return mPreferences.getBoolean(INIT_PRIVATE_ACCOUNT, false)
     }
 }

@@ -423,6 +423,56 @@
                     app:layout_constraintTop_toTopOf="@id/account_label_status"
                     style="@style/SwitchCompatStyle"/>
 
+                <View
+                    style="@style/separator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_label_status" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_btn_change_private_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:background="@drawable/ripple_effect"
+                android:clickable="false"
+                android:focusable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_status">
+
+                <TextView
+                    android:id="@+id/account_private_turn"
+                    style="@style/normal_text"
+                    android:layout_marginBottom="40dp"
+                    tools:text="Аккаунт закрыт"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/account_label_private"
+                    style="@style/label_small_text"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/open_or_close_account"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_private_turn" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_settings_private"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:checked="false"
+                    app:layout_constraintBottom_toBottomOf="@id/account_label_private"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/account_label_private"
+                    style="@style/SwitchCompatStyle"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -432,7 +482,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/colorAccent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/account_btn_change_status" />
+                app:layout_constraintTop_toBottomOf="@id/account_btn_change_private_account" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

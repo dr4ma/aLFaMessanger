@@ -221,6 +221,18 @@ fun showSnackBar(view: View, title: String, color: Int) {
 
 }
 
+fun showSnackBarLong(view: View, title: String, color: Int) {
+    val snack = Snackbar.make(view, title, Snackbar.LENGTH_LONG)
+        .setTextColor(Color.WHITE)
+        .setBackgroundTint(APP_ACTIVITY_MAIN.getColor(color))
+        .setActionTextColor(APP_ACTIVITY_MAIN.getColor(R.color.white))
+    snack.setAction(APP_ACTIVITY_MAIN.getString(R.string.cancel)) {
+        snack.dismiss()
+    }
+    snack.show()
+
+}
+
 @SuppressLint("ClickableViewAccessibility")
 fun EditText.onRightDrawableClicked(onClicked: (view: EditText) -> Unit) {
     this.setOnTouchListener { v, event ->

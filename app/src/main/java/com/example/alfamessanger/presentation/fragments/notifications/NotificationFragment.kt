@@ -64,8 +64,17 @@ class NotificationFragment : Fragment() {
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         mRecyclerView.adapter = mAdapter
 
+        getList()
+
+        mBinding.refreshNotification.setOnRefreshListener {
+            getList()
+        }
+    }
+
+    private fun getList(){
         mViewModel.getNotificationsList {
-            it.forEach { model ->
+            it.sortBy { it.timeStamp.toString() }
+            it.asReversed().forEach { model ->
                 mAdapter.addToList(AppViewNotificationFactory.getView(model))
             }
         }
