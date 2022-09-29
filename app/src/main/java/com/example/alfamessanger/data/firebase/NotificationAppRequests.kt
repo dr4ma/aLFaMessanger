@@ -33,7 +33,6 @@ class NotificationAppRequests : NotificationAppRepository {
         DATABASE_REFERENCE.child(NODE_NOTIFICATIONS).child(UID).addListenerForSingleValueEvent(AppValueEventListener{
             if(it.exists()){
                 notification = it.getValue(NotificationsMainModel :: class.java) ?: NotificationsMainModel()
-                //Log.e(TAG, notification.written.toString())
                 onSuccess(notification)
             }
         })

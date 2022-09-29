@@ -5,6 +5,7 @@ import com.example.alfamessanger.domain.usecases.FeedUseCase
 import com.example.alfamessanger.presentation.fragments.channel.ChannelAdapter
 import com.example.alfamessanger.presentation.fragments.feed.FeedAdapter
 import com.example.alfamessanger.presentation.fragments.mychats.MyChatsChannelsAdapter
+import com.example.alfamessanger.presentation.fragments.notifications.NotificationAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,4 +30,9 @@ class AdaptersModule {
     @Singleton
     fun provideMyChannelsAdapter(feedUseCase: FeedUseCase): MyChatsChannelsAdapter =
         MyChatsChannelsAdapter(feedUseCase)
+
+    @Provides
+    @Singleton
+    fun provideNotificationsAppAdapter(): NotificationAdapter =
+        NotificationAdapter()
 }

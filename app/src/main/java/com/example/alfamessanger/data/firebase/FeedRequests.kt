@@ -68,6 +68,9 @@ class FeedRequests : FeedRepository {
                     val model = it.getValue(NotificationsMainModel::class.java) ?: NotificationsMainModel()
                     onSuccess(model.written)
                 }
+                else{
+                    onSuccess(true)
+                }
             })
     }
 

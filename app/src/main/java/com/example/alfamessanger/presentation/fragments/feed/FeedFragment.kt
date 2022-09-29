@@ -97,7 +97,6 @@ class FeedFragment : BaseFragment() {
                 activity?.menuInflater?.inflate(R.menu.feed_menu_unwatched, menu)
             }
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

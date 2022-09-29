@@ -19,15 +19,18 @@ import com.example.alfamessanger.utills.TAG
 import com.example.alfamessanger.utills.enums.ToolbarSettings
 import com.example.alfamessanger.utills.toolbarTools
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class NotificationFragment : Fragment() {
-
+    
     private val mViewModel: NotificationViewModel by viewModels()
     private var binding: NotificationFragmentBinding? = null
     private val mBinding get() = binding!!
 
-    private lateinit var mAdapter: NotificationAdapter
+    @Inject
+    lateinit var mAdapter: NotificationAdapter
+
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var mRecyclerView: RecyclerView
 
@@ -52,7 +55,6 @@ class NotificationFragment : Fragment() {
         APP_ACTIVITY_MAIN.supportActionBar?.setHomeButtonEnabled(true)
         APP_ACTIVITY_MAIN.paramsToolbar.scrollFlags = 0
         layoutManager = LinearLayoutManager(APP_ACTIVITY_MAIN)
-        mAdapter = NotificationAdapter()
 
         mRecyclerView = mBinding.notificationRecycler
         mRecyclerView.layoutManager = layoutManager

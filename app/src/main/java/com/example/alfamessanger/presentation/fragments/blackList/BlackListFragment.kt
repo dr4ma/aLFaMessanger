@@ -71,14 +71,16 @@ class BlackListFragment : Fragment() {
         mBinding.blockProgress.visibility = View.VISIBLE
 
         mObserverBlack = Observer {
-            mRecyclerView.visibility = View.VISIBLE
-            mBinding.blockProgress.visibility = View.GONE
-            mBinding.noBlock.visibility = View.GONE
-            mAdapter.setList(it)
-
+            if(it.isNotEmpty()){
+                mRecyclerView.visibility = View.VISIBLE
+                mBinding.blockProgress.visibility = View.GONE
+                mBinding.noBlock.visibility = View.GONE
+                mAdapter.setList(it)
+            }
         }
         mViewModel.blackList.observe(APP_ACTIVITY_MAIN, mObserverBlack)
         mViewModel.getBlackList(){
+            showToast("c")
             mBinding.blockProgress.visibility = View.GONE
             mBinding.noBlock.visibility = View.VISIBLE
         }
