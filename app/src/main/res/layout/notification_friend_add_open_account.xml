@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="@dimen/min_margin"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/min_margin">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/photo_user_notification_open_add_friend"
@@ -16,31 +16,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/name_user_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/min_margin"
-        android:textColor="@color/sendMessageColor"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/photo_user_notification_open_add_friend"
-        app:layout_constraintStart_toEndOf="@id/photo_user_notification_open_add_friend"
-        app:layout_constraintTop_toTopOf="@id/photo_user_notification_open_add_friend"
-        tools:text="Gogogo" />
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
-        android:textSize="15sp"
+        android:layout_marginStart="@dimen/min_margin"
+        app:layout_constraintBottom_toBottomOf="@id/photo_user_notification_open_add_friend"
         app:layout_constraintEnd_toEndOf="parent"
-        android:singleLine="true"
-        android:text="@string/add_friend_notification"
-        android:layout_margin="@dimen/min_margin"
-        app:layout_constraintStart_toEndOf="@id/name_user_notification"
-        app:layout_constraintTop_toTopOf="@id/name_user_notification"
-        app:layout_constraintBottom_toBottomOf="@id/name_user_notification"
-        />
+        app:layout_constraintStart_toEndOf="@id/photo_user_notification_open_add_friend"
+        app:layout_constraintTop_toTopOf="@id/photo_user_notification_open_add_friend">
+
+        <TextView
+            android:id="@+id/name_user_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/sendMessageColor"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Gogogo" />
+
+        <TextView
+            android:id="@+id/time_open_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/statusColor"
+            android:textSize="@dimen/min_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/name_user_notification"
+            app:layout_constraintTop_toBottomOf="@id/name_user_notification"
+            tools:text="3ч" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/ago"
+            android:textSize="@dimen/min_text_size"
+            android:textColor="@color/statusColor"
+            app:layout_constraintBottom_toBottomOf="@id/time_open_account"
+            app:layout_constraintStart_toEndOf="@id/time_open_account"
+            app:layout_constraintTop_toTopOf="@id/time_open_account" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/min_margin"
+            android:singleLine="true"
+            android:text="@string/add_friend_notification"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/name_user_notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/name_user_notification"
+            app:layout_constraintTop_toTopOf="@id/name_user_notification" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

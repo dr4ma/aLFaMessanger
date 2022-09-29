@@ -33,6 +33,25 @@ private val singleChatRepository: SingleChatRepository) {
         }
     }
 
+    suspend fun sendNotificationPrivateAccountApp(friendModel: UserModel, onSuccess:() -> Unit){
+        singleChatRepository.createMessageKey(friendModel.uid.toString()){
+            val notificationMainModel = mapOf<String, Boolean>(
+                WRITTEN to false
+            )
+            val notificationModel = NotificationModel(
+                id = it,
+                type = TYPE_ADD_FRIEND_CLOSE,
+                iconUrl = friendModel.iconUrl,
+                userFrom = USER.nickname,
+                timeStamp = ServerValue.TIMESTAMP,
+                userIdFrom = USER.uid.toString()
+            )
+            notificationAppRepository.sendNotificationPrivateAccountApp(friendModel.uid.toString(), notificationMainModel, notificationModel){
+                onSuccess()
+            }
+        }
+    }
+
     fun getNotificationsList(onSuccess: (list: MutableList<NotificationModel>) -> Unit){
         notificationAppRepository.getNotificationsList {
             val notificationList = ArrayList(it.notification_list.values) as MutableList<NotificationModel>

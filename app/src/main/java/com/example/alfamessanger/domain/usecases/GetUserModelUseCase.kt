@@ -36,6 +36,13 @@ class GetUserModelUseCase @Inject constructor(private val getUserModelRepository
         }
     }
 
+    fun setPrivacyAccount(privacy : Boolean){
+        val map = mapOf(
+            "privateAccount" to privacy
+        )
+        getUserModelRepository.setPrivacyAccount(map)
+    }
+
     fun removeObservers(){
         getUserModelRepository.listAllUsersResult.removeObserver(mObserverLoadAllUsers)
         getUserModelRepository.deleteListeners()

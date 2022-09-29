@@ -33,4 +33,8 @@ class AccountFragmentViewModel @Inject constructor(
             function(it)
         }
     }
+
+    fun setPrivacyAccount(privacy : Boolean){
+        getUserModelUseCase.setPrivacyAccount(privacy)
+    }
 }

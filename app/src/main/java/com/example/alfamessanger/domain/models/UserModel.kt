@@ -10,5 +10,6 @@ data class UserModel(
     var bio : String = "",
     var status : String = "",
     var iconUrl : String = "",
+    var privateAccount : Boolean = false,
     var tokenNotification : String = ""
 ) : Serializable

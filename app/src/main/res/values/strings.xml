@@ -146,4 +146,9 @@
     <string name="add_friend_notification">добавил(-а) Вас в друзья</string>
     <string name="accept_friend">Принять</string>
     <string name="disable_friend">Отклонить</string>
+    <string name="open_or_close_account">Открыть/закрыть аккаунт</string>
+    <string name="private_account">Аккаунт закрыт</string>
+    <string name="open_account">Аккаунт открыт</string>
+    <string name="add_in_friend_private_account">Пользователю отправлено уведомление о Вашей заявке в друзья</string>
+    <string name="ago">назад</string>
 </resources>

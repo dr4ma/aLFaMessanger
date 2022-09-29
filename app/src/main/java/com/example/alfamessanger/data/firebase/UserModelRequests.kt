@@ -51,6 +51,12 @@ class UserModelRequests : GetUserModelRepository {
         DATABASE_REFERENCE.child(NODE_USERS).addValueEventListener(listenerAllUsers)
     }
 
+    override fun setPrivacyAccount(map: Map<String, Boolean>) {
+        DATABASE_REFERENCE.child(NODE_USERS).child(UID).updateChildren(map).addOnFailureListener {
+            Log.e(TAG_USER_MODEL, it.message.toString())
+        }
+    }
+
     override fun deleteListeners() {
         DATABASE_REFERENCE.child(NODE_USERS).removeEventListener(listenerAllUsers)
     }

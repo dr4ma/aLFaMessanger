@@ -15,5 +15,13 @@ interface NotificationAppRepository {
         onSuccess: () -> Unit
     )
 
+    fun sendNotificationPrivateAccountApp(
+        friendId: String,
+        notificationsMainModel: Map<String, Boolean>,
+        notificationModel: NotificationModel,
+        onSuccess: () -> Unit
+    )
+
     fun getNotificationsList(onSuccess: (notificationMainModel : NotificationsMainModel) -> Unit)
+
 }
