@@ -4,7 +4,7 @@ alFaMessanger - это удобный компромисс между мессе
 В приложении к тому же имеется проверка на соединение с интернетом и локальная база данных, которая кэширует данные во время работы приложения.
 Также осуществлено раздеение возможных каналов на 3 группы: открытые, закрытые и скрытые. Открытый канал будет виден всем пользователям и каждый может вступить в него и читать нововсти канала. Закрытый канал будет виден всем пользователям, однако контент можно будет просматривать только после одобрения администратором заявки на вступление. Скрытый канал не будет виден никому. Присоединитсья к нему и просматривать его контент можно будет, когда администратор отправит пользователю приглашение.
 # aLFaMessanger. Стек технологий
-Используемый стек технологий: Kotlin, Navigation Component, Datastore Preferences, MVVM + LiveData, Clean architecture, Firebase (Firebase Auth, Firebase Storage, Realtime Database, Cloud Messaging), Room, Retrofit, Dagger Hilt, Picasso, Flow, Kotlin Coroutines.
+Используемый стек технологий: Kotlin, Navigation Component, Datastore Preferences, MVVM + LiveData, Clean architecture, Firebase (Firebase Auth, Firebase Storage, Realtime Database, Cloud Messaging), Room, Retrofit, Dagger Hilt, Picasso, Flow, Kotlin Coroutines, JUnit5, Mockito
 # aLFaMessanger. Скрины приложения
 ![Screenshot_1](https://user-images.githubusercontent.com/94142972/193031038-5d9d7bcc-b96d-4558-b2f9-ff1e96f7d69b.png)
 ![Screenshot_2](https://user-images.githubusercontent.com/94142972/193031108-ac27ade8-afcc-4042-ad04-50e5ccafa1a3.png)
