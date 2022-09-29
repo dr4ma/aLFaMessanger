@@ -6,19 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alfamessanger.R
-import com.example.alfamessanger.databinding.FragmentMyChatsBinding
 import com.example.alfamessanger.databinding.FragmentSavedBinding
 import com.example.alfamessanger.domain.models.SavedPhotoModel
-import com.example.alfamessanger.domain.models.UserModel
-import com.example.alfamessanger.presentation.BottomSheetApp
-import com.example.alfamessanger.presentation.activities.RegisterActivity
-import com.example.alfamessanger.presentation.fragments.mychats.MyChatsAdapter
-import com.example.alfamessanger.presentation.fragments.mychats.MyChatsFragmentViewModel
 import com.example.alfamessanger.utills.*
-import com.example.alfamessanger.utills.enums.BottomSheetSettings
 import com.example.alfamessanger.utills.enums.ToolbarSettings
 import dagger.hilt.android.AndroidEntryPoint
 

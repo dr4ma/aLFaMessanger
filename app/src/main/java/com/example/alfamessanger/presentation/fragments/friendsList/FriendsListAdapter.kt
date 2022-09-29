@@ -20,7 +20,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_black_list_recycler.view.*
 import kotlinx.android.synthetic.main.item_friends_list.view.*
 
-class FriendsListAdapter(private val listener: FriendsListAdapter.OnItemClickListener) : RecyclerView.Adapter<FriendsListAdapter.FriendsListViewHolder>() {
+class FriendsListAdapter(private val listener: FriendsListAdapter.OnItemClickListener) :
+    RecyclerView.Adapter<FriendsListAdapter.FriendsListViewHolder>() {
 
     private var mListUsers = mutableListOf<UserModel>()
 

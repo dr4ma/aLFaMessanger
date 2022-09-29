@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#414c8d</color>
+    <color name="primaryColorStatic">#414c8d</color>
     <color name="primaryColorSecond">#facea5</color>
     <color name="purple_700">#9600FF</color>
     <color name="teal_200">#00FFF7</color>
@@ -16,12 +17,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorError">#FF4141</color>
     <color name="colorRed">#FF2A2A</color>
+    <color name="colorRedLight">#FF7575</color>
+    <color name="colorOrange">#FFDF8E</color>
     <color name="colorGreyBackground">#EAEAEA</color>
     <color name="colorGreyStroke">#E6E6E6</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorAccentDark">#BDBDBD</color>
     <color name="trackColor">#D1D1D1</color>
     <color name="colorBoxContentStyle">#ffffff</color>
+    <color name="colorFilesFeed">#B7C1FF</color>
     <color name="colorGrey">#595959</color>
     <color name="colorSeparator">#A3A3A3</color>
     <color name="colorFlagSwitch">#F6F6F6</color>
@@ -43,6 +47,7 @@
     <color name="colorStatusBarTint">#20243c</color>
     <color name="colorPopupText">#383838</color>
     <color name="colorGreen">#007710</color>
+    <color name="colorGreenLight">#6CB576</color>
     <color name="colorMessageBorder">#414c8d</color>
     <color name="colorCheckTrue">#414c8d</color>
     <color name="colorCheckFalse">#000000</color>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/box_channels_feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/min_margin"
+        android:background="@drawable/came_image_messages_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_feed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="500dp"
+            app:layout_constraintHeight_min="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_feed_channel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/files_feed_style"
+                android:scaleType="centerCrop"
+                android:src="@drawable/verify_pic" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_feed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/min_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/min_margin"
+            android:gravity="top|start"
+            android:textColor="@color/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_feed"
+            tools:text="cbceucyebygdcuhdhsbcdhcbcbcbccieucnweiucnwcnwicuwejncwiecwucwnbcuiwbcuwbcwuicwebcw" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/file_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/min_margin"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_feed">
+
+            <ImageView
+                android:id="@+id/file_icon_feed"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_file"
+                app:tint="@color/colorPopupText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+            <TextView
+                android:id="@+id/name_file"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="name"
+                android:textStyle="italic"
+                android:textSize="@dimen/min_text_size"
+                android:singleLine="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/min_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/file_icon_feed"
+                app:layout_constraintTop_toTopOf="@id/file_icon_feed"
+                />
+
+            <TextView
+                android:id="@+id/size_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20 B"
+                android:textStyle="italic"
+                android:textSize="@dimen/min_text_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/min_margin"
+                app:layout_constraintStart_toEndOf="@id/file_icon_feed"
+                app:layout_constraintBottom_toBottomOf="@id/file_icon_feed"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/time_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/min_margin"
+            android:textColor="@color/statusColor"
+            android:textSize="@dimen/min_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/file_box"
+            tools:text="23:45" />
+
+        <View
+            android:id="@+id/separator_feed"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginEnd="@dimen/min_margin"
+            android:background="@drawable/ic_point"
+            app:layout_constraintBottom_toBottomOf="@id/time_feed"
+            app:layout_constraintEnd_toStartOf="@id/time_feed"
+            app:layout_constraintTop_toTopOf="@id/time_feed" />
+
+        <TextView
+            android:id="@+id/name_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/min_margin"
+            android:textColor="@color/statusColor"
+            app:layout_constraintBottom_toBottomOf="@id/separator_feed"
+            app:layout_constraintEnd_toStartOf="@id/separator_feed"
+            app:layout_constraintTop_toTopOf="@id/separator_feed"
+            tools:text="Maxim Andreevich" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

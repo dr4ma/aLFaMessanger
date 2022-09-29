@@ -16,7 +16,8 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AlfaMessanger">
+        android:theme="@style/Theme.AlfaMessanger"
+        >
         <service android:name=".utills.FirebaseService"
             android:permission="com.google.android.c2dm.permission.SEND"
             android:exported="false">
@@ -29,14 +30,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat"/>
         <activity
-            android:name=".presentation.activities.RegisterActivity"
+            android:name=".presentation.activities.registerActivity.RegisterActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".presentation.activities.SplashScreen"
+            android:name=".presentation.activities.splashActivity.SplashScreen"
+            android:configChanges="uiMode"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.activities.MainActivity"
+            android:name=".presentation.activities.mainActivity.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
     </application>

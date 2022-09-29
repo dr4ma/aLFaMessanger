@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_allChatsFragment_to_singleChatFragment"
             app:destination="@id/singleChatFragment" />
+        <action
+            android:id="@+id/action_allChatsFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_accountFragment_to_blackListFragment"
             app:destination="@id/blackListFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_myChannelsFragment"
+            app:destination="@id/myChannelsFragment" />
     </fragment>
     <fragment
         android:id="@+id/myChatsFragment"
@@ -43,12 +49,28 @@
         <action
             android:id="@+id/action_myChatsFragment_to_singleChatFragment"
             app:destination="@id/singleChatFragment" />
+        <action
+            android:id="@+id/action_myChatsFragment_to_createChannelFragment"
+            app:destination="@id/createChannelFragment" />
+        <action
+            android:id="@+id/action_myChatsFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
     </fragment>
     <fragment
         android:id="@+id/feedFragment"
         android:name="com.example.alfamessanger.presentation.fragments.feed.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/changeUserDataFragment"
         android:name="com.example.alfamessanger.presentation.fragments.changeUserData.ChangeUserDataFragment"
@@ -125,4 +147,51 @@
         android:name="com.example.alfamessanger.presentation.fragments.graffiti.GraffitiFragment"
         android:label="graffiti_fragment"
         tools:layout="@layout/graffiti_fragment" />
+    <fragment
+        android:id="@+id/createChannelFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.createChannel.CreateChannelFragment"
+        android:label="create_channel_fragment"
+        tools:layout="@layout/create_channel_fragment" >
+        <action
+            android:id="@+id/action_createChannelFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.channel.ChannelFragment"
+        android:label="channel_fragment"
+        tools:layout="@layout/channel_fragment" >
+        <action
+            android:id="@+id/action_channelFragment_to_imageFullScreenFragment"
+            app:destination="@id/imageFullScreenFragment" />
+        <action
+            android:id="@+id/action_channelFragment_to_subscribersFragment"
+            app:destination="@id/subscribersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChannelsFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.myChannels.MyChannelsFragment"
+        android:label="my_channels_fragment"
+        tools:layout="@layout/my_channels_fragment" >
+        <action
+            android:id="@+id/action_myChannelsFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscribersFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.subscribers.SubscribersFragment"
+        android:label="subscribers_fragment"
+        tools:layout="@layout/subscribers_fragment" >
+        <action
+            android:id="@+id/action_subscribersFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_subscribersFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.alfamessanger.presentation.fragments.notifications.NotificationFragment"
+        android:label="notification_fragment"
+        tools:layout="@layout/notification_fragment" />
 </navigation>

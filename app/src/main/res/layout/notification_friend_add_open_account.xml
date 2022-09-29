@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="@dimen/min_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photo_user_notification_open_add_friend"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/min_margin"
+        android:src="@drawable/default_user"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_user_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/min_margin"
+        android:textColor="@color/sendMessageColor"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/photo_user_notification_open_add_friend"
+        app:layout_constraintStart_toEndOf="@id/photo_user_notification_open_add_friend"
+        app:layout_constraintTop_toTopOf="@id/photo_user_notification_open_add_friend"
+        tools:text="Gogogo" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColor"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:singleLine="true"
+        android:text="@string/add_friend_notification"
+        android:layout_margin="@dimen/min_margin"
+        app:layout_constraintStart_toEndOf="@id/name_user_notification"
+        app:layout_constraintTop_toTopOf="@id/name_user_notification"
+        app:layout_constraintBottom_toBottomOf="@id/name_user_notification"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

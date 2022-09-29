@@ -1,36 +1,32 @@
 package com.example.alfamessanger.domain.usecases
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.alfamessanger.domain.models.ChatModel
-import com.example.alfamessanger.domain.models.MessageModel
-import com.example.alfamessanger.domain.models.UserModel
 import com.example.alfamessanger.domain.repository.GetUserModelRepository
 import com.example.alfamessanger.domain.repository.MyChatsRepository
-import com.example.alfamessanger.utills.APP_ACTIVITY_MAIN
+import com.example.alfamessanger.utills.TAG
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class MyChatsUseCase @Inject constructor(private val myChatsRepository: MyChatsRepository, private val userModelRepository: GetUserModelRepository) {
 
-    private lateinit var mObserverChats: Observer<MutableList<ChatModel>>
-    val chat: MutableLiveData<MutableList<ChatModel>> = MutableLiveData()
-
-    fun getAllChats(function:() -> Unit){
-        mObserverChats = Observer {
-            chat.value = it
-        }
-        myChatsRepository.listAllChatsResult.observe(APP_ACTIVITY_MAIN, mObserverChats)
+    fun getAllChats(function:() -> Unit) : Flow<MutableList<ChatModel>> = flow{
         myChatsRepository.getAllChats(){
             function()
         }
-    }
+            .collect {
+                emit(it)
+            }
+    }.flowOn(Dispatchers.IO).distinctUntilChanged()
 
     suspend fun getUserModel(){
         userModelRepository.getUserModel {  }
     }
 
     fun removeObservers(){
-        myChatsRepository.listAllChatsResult.removeObserver(mObserverChats)
         myChatsRepository.removeListeners()
     }
 }

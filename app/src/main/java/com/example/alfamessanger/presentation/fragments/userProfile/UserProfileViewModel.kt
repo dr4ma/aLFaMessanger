@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.alfamessanger.domain.models.UserModel
 import com.example.alfamessanger.domain.repository.NotificationsRepository
+import com.example.alfamessanger.domain.usecases.NotificationAppUseCase
 import com.example.alfamessanger.domain.usecases.NotificationsUseCase
 import com.example.alfamessanger.domain.usecases.UserProfileUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,12 +14,23 @@ import javax.inject.Inject
 @HiltViewModel
 class UserProfileViewModel @Inject constructor(
     private val userProfileUseCase: UserProfileUseCase,
-    private val notificationsUseCase: NotificationsUseCase
+    private val notificationsUseCase: NotificationsUseCase,
+    private val notificationAppUseCase: NotificationAppUseCase
 ) : ViewModel() {
 
     fun addInFriends(friendModel: UserModel, onSuccess: () -> Unit) {
         userProfileUseCase.addInFriends(friendModel) {
-            onSuccess()
+            sendNotificationApp(friendModel){
+                onSuccess()
+            }
+        }
+    }
+
+    private fun sendNotificationApp(friendModel: UserModel, onSuccess: () -> Unit){
+        viewModelScope.launch {
+            notificationAppUseCase.sendNotificationApp(friendModel){
+                onSuccess()
+            }
         }
     }
 

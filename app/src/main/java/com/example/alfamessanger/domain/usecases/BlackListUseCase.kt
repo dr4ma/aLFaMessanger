@@ -1,36 +1,24 @@
 package com.example.alfamessanger.domain.usecases
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import com.example.alfamessanger.domain.models.BlackListUserModel
-import com.example.alfamessanger.domain.models.UserModel
 import com.example.alfamessanger.domain.repository.BlackListRepository
-import com.example.alfamessanger.utills.APP_ACTIVITY_MAIN
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class BlackListUseCase @Inject constructor(private val blackListRepository: BlackListRepository) {
 
-    val blackList: MutableLiveData<MutableList<BlackListUserModel>> = MutableLiveData()
-    private lateinit var mObserverBlack: Observer<MutableList<BlackListUserModel>>
-
-    fun getBlackList(function:() -> Unit){
-        mObserverBlack = Observer {
-            blackList.value = it
-        }
-        blackListRepository.blackList.observe(APP_ACTIVITY_MAIN, mObserverBlack)
-        blackListRepository.getBlackList(){
+    fun getBlackList(function: () -> Unit): Flow<MutableList<BlackListUserModel>> = flow {
+        blackListRepository.getBlackList{
             function()
+        }.collect {
+            emit(it)
         }
-    }
+    }.flowOn(Dispatchers.IO).distinctUntilChanged()
 
-    fun removeFromBlackList(model: BlackListUserModel, onSuccess : () -> Unit){
-        blackListRepository.removeFromBlackList(model){
+    fun removeFromBlackList(model: BlackListUserModel, onSuccess: () -> Unit) {
+        blackListRepository.removeFromBlackList(model) {
             onSuccess()
         }
-    }
-
-    fun removeObserver(){
-        blackListRepository.blackList.removeObserver(mObserverBlack)
-        blackListRepository.removeListener()
     }
 }

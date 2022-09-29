@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.alfamessanger.R
 import com.example.alfamessanger.databinding.FragmentLogInBinding
-import com.example.alfamessanger.presentation.activities.RegisterActivity
-import com.example.alfamessanger.utills.APP_ACTIVITY_REGISTER
-import com.example.alfamessanger.utills.AUTH
 import com.example.alfamessanger.utills.showToast
 import dagger.hilt.android.AndroidEntryPoint
 

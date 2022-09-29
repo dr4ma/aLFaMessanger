@@ -4,7 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.activities.SplashScreen"
-    android:background="@color/primaryColor">
+    tools:context=".presentation.activities.splashActivity.SplashScreen">
 
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/no_connection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/connection_error"
+        app:lottie_renderMode="hardware" />
+
+    <LinearLayout
+        android:id="@+id/noConnectionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/no_connection"
+        app:layout_constraintStart_toStartOf="@id/no_connection"
+        app:layout_constraintTop_toBottomOf="@id/no_connection">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_conn_label"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/connectionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/no_connection"
+        app:layout_constraintStart_toStartOf="@id/no_connection"
+        app:layout_constraintTop_toBottomOf="@id/no_connection">
+
+        <ProgressBar
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:indeterminateTint="@color/white"
+            android:layout_marginEnd="@dimen/min_margin"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connection_proccess"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

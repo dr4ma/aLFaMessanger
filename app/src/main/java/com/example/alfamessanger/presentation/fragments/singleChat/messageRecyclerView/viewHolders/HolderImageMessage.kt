@@ -22,8 +22,11 @@ import com.example.alfamessanger.presentation.fragments.singleChat.SingleChatFra
 import com.example.alfamessanger.presentation.fragments.singleChat.messageRecyclerView.views.MessageView
 import com.example.alfamessanger.utills.*
 import com.example.alfamessanger.utills.enums.PopupTypesOperationChat
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.android.synthetic.main.messages_image_layout.view.*
-
+import javax.inject.Inject
 
 class HolderImageMessage(private val model : UserModel, view : View) : RecyclerView.ViewHolder(view), MessageHolder {
 

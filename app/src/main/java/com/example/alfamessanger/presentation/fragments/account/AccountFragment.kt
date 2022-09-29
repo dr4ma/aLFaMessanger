@@ -12,7 +12,7 @@ import com.example.alfamessanger.databinding.FragmentAccountBinding
 import com.example.alfamessanger.domain.models.SavedPhotoModel
 import com.example.alfamessanger.presentation.fragments.BaseFragment
 import com.example.alfamessanger.presentation.BottomSheetApp
-import com.example.alfamessanger.presentation.activities.RegisterActivity
+import com.example.alfamessanger.presentation.activities.registerActivity.RegisterActivity
 import com.example.alfamessanger.utills.*
 import com.example.alfamessanger.utills.enums.BottomSheetSettings
 import com.example.alfamessanger.utills.enums.ToolbarSettings
@@ -91,10 +91,12 @@ class AccountFragment : BaseFragment() {
         mBinding.switchSettingsTheme.setOnCheckedChangeListener { compoundButton, isChecked ->
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                APP_ACTIVITY_MAIN.delegate.applyDayNight()
                 AppPreferences.setTheme(NIGHT_THEME)
             }
             else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                APP_ACTIVITY_MAIN.delegate.applyDayNight()
                 AppPreferences.setTheme(LIGHT_THEME)
             }
         }
@@ -187,6 +189,9 @@ class AccountFragment : BaseFragment() {
                         }
                         BLACK_LIST -> {
                             APP_ACTIVITY_MAIN.mNavController.navigate(R.id.action_accountFragment_to_blackListFragment)
+                        }
+                        MY_CHANNELS -> {
+                            APP_ACTIVITY_MAIN.mNavController.navigate(R.id.action_accountFragment_to_myChannelsFragment)
                         }
                     }
                 }

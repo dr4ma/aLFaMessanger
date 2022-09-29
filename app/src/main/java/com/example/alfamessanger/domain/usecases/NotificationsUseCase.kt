@@ -1,10 +1,8 @@
 package com.example.alfamessanger.domain.usecases
 
-import com.example.alfamessanger.domain.models.NotificationData
-import com.example.alfamessanger.domain.models.PushNotification
-import com.example.alfamessanger.domain.models.UserModel
+import com.example.alfamessanger.domain.models.*
 import com.example.alfamessanger.domain.repository.NotificationsRepository
-import com.example.alfamessanger.presentation.fragments.feed.TOPIC
+import com.example.alfamessanger.utills.TOPIC
 import com.google.firebase.messaging.FirebaseMessaging
 import javax.inject.Inject
 

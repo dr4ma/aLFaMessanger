@@ -69,4 +69,44 @@ class DataModule {
     fun provideNotificationRepository() : NotificationsRepository{
         return NotificationsRequests()
     }
+
+    @Provides
+    fun provideCreateChannelRepository() : CreateChannelRepository{
+        return CreateChannelRequests()
+    }
+
+    @Provides
+    fun provideChannelsSearchRepository() : SearchChannelsRepository{
+        return SearchChannelsRequests()
+    }
+
+    @Provides
+    fun provideChannelsRepository() : ChannelRepository{
+        return ChannelsRequests()
+    }
+
+    @Provides
+    fun provideMyChannelsRepository() : MyChannelsRepository{
+        return MyChannelsRequests()
+    }
+
+    @Provides
+    fun provideSubRepository() : SubscribersRepository{
+        return SubscribersRequests()
+    }
+
+    @Provides
+    fun provideFeedRepository() : FeedRepository{
+        return FeedRequests()
+    }
+
+    @Provides
+    fun provideChannelsMyChatsRepository() : MyChatsChannelsRepository{
+        return MyChatsChannelsRequests()
+    }
+
+    @Provides
+    fun provideNotificationAppRepository() : NotificationAppRepository{
+        return NotificationAppRequests()
+    }
 }

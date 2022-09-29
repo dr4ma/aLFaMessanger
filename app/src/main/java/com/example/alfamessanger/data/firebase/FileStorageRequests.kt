@@ -2,6 +2,8 @@ package com.example.alfamessanger.data.firebase
 
 import android.net.Uri
 import android.util.Log
+import com.example.alfamessanger.domain.models.ChannelModel
+import com.example.alfamessanger.domain.models.FeedModel
 import com.example.alfamessanger.domain.repository.FileStorageRepository
 import com.example.alfamessanger.utills.*
 import com.google.firebase.storage.FileDownloadTask
@@ -43,13 +45,56 @@ class FileStorageRequests : FileStorageRepository {
             }
     }
 
+    override fun putIconUrlToChannel(model : ChannelModel, url: String) {
+        val urlMap = mapOf(
+            CHILD_ICON_URL to url
+        )
+        DATABASE_REFERENCE.child(NODE_CHANNELS).child(model.channelId).updateChildren(urlMap)
+            .addOnSuccessListener {
+                Log.e(TAG_FILE_STORAGE, "Put url to database error success ")
+            }
+            .addOnFailureListener {
+                Log.e(TAG_FILE_STORAGE, "Put url to database error: " + it.message.toString())
+            }
+    }
+
+    override fun putImageFeed(
+        channelId: String,
+        model: FeedModel,
+        url: String
+    ) {
+        val urlMap = mapOf(
+            CHILD_ICON_URI to url
+        )
+        DATABASE_REFERENCE.child(NODE_CHANNELS).child(channelId).child(CHILD_FEED).child(model.feedId).updateChildren(urlMap)
+            .addOnSuccessListener {
+                Log.e(TAG_FILE_STORAGE, "Put url to database success")
+            }
+            .addOnFailureListener {
+                Log.e(TAG_FILE_STORAGE, "Put url to database error: " + it.message.toString())
+            }
+    }
+
+    override fun putFileFeed(
+        channelId: String,
+        model: FeedModel,
+        url: String
+    ) {
+        val urlMap = mapOf(
+            CHILD_FILE_URI to url
+        )
+        DATABASE_REFERENCE.child(NODE_CHANNELS).child(channelId).child(CHILD_FEED).child(model.feedId).updateChildren(urlMap)
+            .addOnSuccessListener {
+                Log.e(TAG_FILE_STORAGE, "Put url to database error success")
+            }
+            .addOnFailureListener {
+                Log.e(TAG_FILE_STORAGE, "Put url to database error: " + it.message.toString())
+            }
+    }
+
     override fun getFileFromStorage(file: File, fileUrl: String, function: () -> Unit) {
         val path = STORAGE_REFERENCE.storage.getReferenceFromUrl(fileUrl)
         path.getFile(file)
-//            .addOnProgressListener { it ->
-//                val value = (100.0 * it.bytesTransferred) / it.totalByteCount
-//                showToast(value.toString())
-//            }
             .addOnSuccessListener {
                 function()
             }

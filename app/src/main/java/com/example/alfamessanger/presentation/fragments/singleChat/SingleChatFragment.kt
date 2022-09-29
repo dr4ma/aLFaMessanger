@@ -55,8 +55,9 @@ class SingleChatFragment : Fragment() {
     private var mIsScrolling = false
     private var smoothScrollToPosition = true
     private var editTextMessage = false
-    private lateinit var uriGraffiti : Uri
-    private lateinit var mMessageKey : String
+    private lateinit var uriGraffiti: Uri
+    private lateinit var mMessageKey: String
+    private lateinit var layoutManager: LinearLayoutManager
 
     private lateinit var animZoom: Animation
     private lateinit var animOut: Animation
@@ -98,14 +99,18 @@ class SingleChatFragment : Fragment() {
             mBinding.enterMessage.setText(it.text)
             editTextMessage = true
         }
-        val layoutManager = LinearLayoutManager(APP_ACTIVITY_MAIN)
+        layoutManager = LinearLayoutManager(APP_ACTIVITY_MAIN)
 
         // чтобы сообщения отображались снизу
         layoutManager.stackFromEnd = true
 
         mRecyclerView.layoutManager = layoutManager
         mRecyclerView.isNestedScrollingEnabled = false
+
+        mAdapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         mRecyclerView.adapter = mAdapter
+
         mRecyclerView.visibility = View.INVISIBLE
         mBinding.dialogIsEmpty.visibility = View.GONE
         mBinding.progressLoadMessages.visibility = View.VISIBLE
@@ -413,7 +418,7 @@ class SingleChatFragment : Fragment() {
 
     private fun sendGraffiti() {
         val uriGraffitiString = AppPreferences.getGraffiti()
-        if(uriGraffitiString != "" || uriGraffitiString.isNotEmpty()) {
+        if (uriGraffitiString != "" || uriGraffitiString.isNotEmpty()) {
             uriGraffiti = Uri.parse(uriGraffitiString)
             val bitmapImage = BitmapFactory.decodeStream(
                 APP_ACTIVITY_MAIN.contentResolver.openInputStream(uriGraffiti),
@@ -431,7 +436,7 @@ class SingleChatFragment : Fragment() {
                         uriGraffiti,
                         path,
                         bitmapImage
-                    ){
+                    ) {
                         showLoadBar(false, null)
                         mViewModel.sendNotification(
                             mUserModel,
@@ -444,6 +449,7 @@ class SingleChatFragment : Fragment() {
             }
         }
     }
+
 
     private fun showLoadBar(status: Boolean, tittle: String?) {
         mBinding.apply {
@@ -467,13 +473,9 @@ class SingleChatFragment : Fragment() {
                 when (requestCode) {
                     PICK_IMAGE_GALLERY -> {
                         val uri = data.data
-                        val bitmapImage = BitmapFactory.decodeStream(
-                            APP_ACTIVITY_MAIN.contentResolver.openInputStream(uri!!),
-                            null,
-                            null
-                        )
+                        val bitmapImage = createBitmapForSize(uri)
                         val path = STORAGE_REFERENCE.child(FOLDER_MESSAGES_IMAGE).child(messageKey)
-                        if (bitmapImage != null) {
+                        if (bitmapImage != null && uri != null) {
                             showLoadBar(true, getString(R.string.image_loading))
                             mViewModel.loadPic(
                                 mUserModel,
@@ -495,13 +497,9 @@ class SingleChatFragment : Fragment() {
                     }
                     PICK_IMAGE_CAMERA -> {
                         val uri = data.data
-                        val bitmapImage = BitmapFactory.decodeStream(
-                            APP_ACTIVITY_MAIN.contentResolver.openInputStream(uri!!),
-                            null,
-                            null
-                        )
+                        val bitmapImage = createBitmapForSize(uri)
                         val path = STORAGE_REFERENCE.child(FOLDER_MESSAGES_IMAGE).child(messageKey)
-                        if (bitmapImage != null) {
+                        if (bitmapImage != null && uri != null) {
                             showLoadBar(true, getString(R.string.image_loading))
                             mViewModel.loadPic(
                                 mUserModel,

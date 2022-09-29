@@ -16,7 +16,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_my_chats_recycler.view.*
 import kotlinx.android.synthetic.main.item_users_search_recycler.view.*
 
-class MyChatsAdapter(private val listener: MyChatsAdapter.OnItemClickListener) :
+class MyChatsAdapter(private val listener: OnItemClickListener) :
     RecyclerView.Adapter<MyChatsAdapter.MyChatsViewHolder>() {
 
     private var mListChat = mutableListOf<ChatModel>()
@@ -74,7 +74,7 @@ class MyChatsAdapter(private val listener: MyChatsAdapter.OnItemClickListener) :
 
     fun setList(list: MutableList<ChatModel>) {
         mListChat = list
-        notifyItemChanged(0, mListChat.size)
+        notifyDataSetChanged()
 //        if (!mListChat.contains(item)) {
 //            mListChat.add(item)
 //            mListChat.sortBy { it.time_stamp.toString() }

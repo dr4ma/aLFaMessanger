@@ -13,7 +13,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.alfamessanger.R
-import com.example.alfamessanger.presentation.activities.MainActivity
+import com.example.alfamessanger.presentation.activities.mainActivity.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random

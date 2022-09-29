@@ -6,7 +6,14 @@ import com.example.alfamessanger.domain.repository.MyChatsRepository
 import com.example.alfamessanger.utills.*
 import com.example.alfamessanger.utills.listeners.AppValueEventListener
 import com.google.firebase.database.ChildEventListener
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class MyChatsRequests : MyChatsRepository {
 
     private lateinit var mListenerGetMessages: ChildEventListener
@@ -15,7 +22,7 @@ class MyChatsRequests : MyChatsRepository {
     private var listAllChats: MutableList<ChatModel> = mutableListOf()
     override val listAllChatsResult: MutableLiveData<MutableList<ChatModel>> = MutableLiveData()
 
-    override fun getAllChats(function: () -> Unit) {
+    override fun getAllChats(function: () -> Unit) : Flow<MutableList<ChatModel>> = callbackFlow {
 
         listenerAllChats = AppValueEventListener { data ->
             if (data.exists()) {
@@ -25,7 +32,10 @@ class MyChatsRequests : MyChatsRepository {
                 }
                 listAllChats.sortBy { it.time_stamp.toString() }
                 listAllChats.reverse()
-                listAllChatsResult.value = listAllChats
+                //listAllChatsResult.value = listAllChats
+            }
+            launch {
+                send(listAllChats)
             }
         }
         DATABASE_REFERENCE.child(NODE_CHATS).child(UID).addValueEventListener(listenerAllChats)
@@ -35,33 +45,8 @@ class MyChatsRequests : MyChatsRepository {
                     function()
                 }
             })
-//        mListenerGetMessages = object : ChildEventListener {
-//            override fun onChildAdded(item: DataSnapshot, previousChildName: String?) {
-//                if (item.exists()) {
-//                    chat.value = item.getValue(ChatModel::class.java)
-//                    chat.value?.let { showToast(it?.text) }
-//                }
-//            }
-//
-//            override fun onChildChanged(item: DataSnapshot, previousChildName: String?) {
-//
-//            }
-//
-//            override fun onChildRemoved(item: DataSnapshot) {
-//
-//            }
-//
-//            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.e(TAG_SINGLE_CHAT, "Get message error: " + error.message)
-//            }
-//        }
-//        DATABASE_REFERENCE.child(NODE_CHATS).child(UID).removeEventListener(mListenerGetMessages)
-//        DATABASE_REFERENCE.child(NODE_CHATS).child(UID).addChildEventListener(mListenerGetMessages)
-    }
+        awaitClose()
+    }.distinctUntilChanged()
 
     override fun removeListeners(){
         DATABASE_REFERENCE.child(NODE_CHATS).child(UID).removeEventListener(listenerAllChats)

@@ -126,4 +126,82 @@ class DomainModule {
             notificationsRepository = repository
         )
     }
+
+    @Provides
+    fun provideCreateChannelUseCase(
+        repository: CreateChannelRepository
+    ): CreateChannelUseCase {
+        return CreateChannelUseCase(
+            createChannelRepository = repository
+        )
+    }
+
+    @Provides
+    fun provideSearchChannelsUseCase(
+        repository: SearchChannelsRepository
+    ): SearchChannelsUseCase {
+        return SearchChannelsUseCase(
+            searchChannelsRepository = repository
+        )
+    }
+
+    @Provides
+    fun provideChannelsUseCase(
+        repository: ChannelRepository,
+        fileStorageRepository: FileStorageRepository
+    ): ChannelUseCase {
+        return ChannelUseCase(
+            channelsRepository = repository,
+            fileStorageRepository = fileStorageRepository
+        )
+    }
+
+    @Provides
+    fun provideMyChannelsUseCase(
+        repository: MyChannelsRepository
+    ): MyChannelsUseCase {
+        return MyChannelsUseCase(
+            myChannelsRepository = repository
+        )
+    }
+
+    @Provides
+    fun provideSubUseCase(
+        repository: SubscribersRepository
+    ): SubscribersUseCase {
+        return SubscribersUseCase(
+            subscribersRepository = repository
+        )
+    }
+
+    @Provides
+    fun provideFeedUseCase(
+        repository: FeedRepository,
+        fileStorageRepository: FileStorageRepository
+    ): FeedUseCase {
+        return FeedUseCase(
+            feedRepository = repository,
+            fileStorageRepository = fileStorageRepository
+        )
+    }
+
+    @Provides
+    fun provideMyChatsChannelsUseCase(
+        repository: MyChatsChannelsRepository
+    ): MyChatsChannelsUseCase {
+        return MyChatsChannelsUseCase(
+            myChatsChannelsRepository = repository
+        )
+    }
+    @Provides
+    fun provideNotificationAppUseCase(
+        notificationRepository: NotificationAppRepository,
+        singleChatRepository: SingleChatRepository
+    ): NotificationAppUseCase {
+        return NotificationAppUseCase(
+            notificationAppRepository = notificationRepository,
+            singleChatRepository = singleChatRepository
+        )
+    }
+
 }

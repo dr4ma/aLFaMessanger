@@ -1,11 +1,13 @@
 package com.example.alfamessanger.presentation
 
 import android.annotation.SuppressLint
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 import com.example.alfamessanger.R
 import com.example.alfamessanger.utills.*
+import com.example.alfamessanger.utills.enums.PopupTypesOperationChannel
 import com.example.alfamessanger.utills.enums.PopupTypesOperationChat
 
 object PopupWindowApp {
@@ -64,8 +66,56 @@ object PopupWindowApp {
                 }
                 popup.showAsDropDown(viewUnder, 0, 0)
             }
+
+
         }
 
+    }
+
+    fun createChannelPopup(type : String, viewUnder: View, function: (typeOperation: PopupTypesOperationChannel) -> Unit){
+        when(type) {
+            POPUP_CHANNEL_ADMIN -> {
+                val view = LayoutInflater.from(APP_ACTIVITY_MAIN)
+                    .inflate(R.layout.popup_channel_admin_layout, null)
+                popup.contentView = view
+                popup.isOutsideTouchable = true
+                popup.setBackgroundDrawable(APP_ACTIVITY_MAIN.resources.getDrawable(R.drawable.popup_style))
+                popup.width = (getDisplayMetrics().widthPixels / KF_POPUP_WIDTH).toInt()
+                popup.height = (getDisplayMetrics().heightPixels / KF_POPUP_HEIGHT_ALT).toInt()
+                if (popup.height > 780) {
+                    popup.height = 780
+                }
+                popup.animationStyle = R.style.anim_popup
+                view.findViewById<View>(R.id.delete_news).setOnClickListener {
+                    dismissPopup()
+                    function(PopupTypesOperationChannel.DELETE)
+                }
+                view.findViewById<View>(R.id.copy_news).setOnClickListener {
+                    dismissPopup()
+                    function(PopupTypesOperationChannel.COPY)
+                }
+                popup.showAsDropDown(viewUnder, 0,0)
+            }
+
+            POPUP_CHANNEL_SUB -> {
+                val view = LayoutInflater.from(APP_ACTIVITY_MAIN)
+                    .inflate(R.layout.popup_channel_sub_layout, null)
+                popup.contentView = view
+                popup.isOutsideTouchable = true
+                popup.setBackgroundDrawable(APP_ACTIVITY_MAIN.resources.getDrawable(R.drawable.popup_style))
+                popup.width = (getDisplayMetrics().widthPixels / KF_POPUP_WIDTH).toInt()
+                popup.height = (getDisplayMetrics().heightPixels / KF_POPUP_HEIGHT_SUB).toInt()
+                if (popup.height > 500){
+                    popup.height = 500
+                }
+                popup.animationStyle = R.style.anim_popup
+                view.findViewById<View>(R.id.copy_news).setOnClickListener {
+                    dismissPopup()
+                    function(PopupTypesOperationChannel.COPY)
+                }
+                popup.showAsDropDown(viewUnder, 0, 0)
+            }
+        }
     }
 
     fun dismissPopup(){

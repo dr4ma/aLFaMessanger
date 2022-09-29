@@ -87,7 +87,6 @@ class BlackListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         mViewModel.blackList.removeObserver(mObserverBlack)
-        mViewModel.removeObserver()
         binding = null
     }
 

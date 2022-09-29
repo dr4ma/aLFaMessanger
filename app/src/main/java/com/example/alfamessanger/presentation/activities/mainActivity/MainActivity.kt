@@ -1,4 +1,4 @@
-package com.example.alfamessanger.presentation.activities
+package com.example.alfamessanger.presentation.activities.mainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,13 +6,16 @@ import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.example.alfamessanger.R
+import com.example.alfamessanger.databinding.ActivityMainBinding
 import com.example.alfamessanger.domain.models.UserModel
 import com.example.alfamessanger.utills.*
 import com.example.alfamessanger.utills.enums.Status
+import com.example.alfamessanger.utills.enums.StatusConnection
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,28 +27,47 @@ class MainActivity : AppCompatActivity() {
     lateinit var paramsToolbar: AppBarLayout.LayoutParams
     lateinit var tintApp : View
 
+    private var connectionChanged = false
+
+    private lateinit var binding : ActivityMainBinding
+    private lateinit var mViewModel : MainActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         initFields()
-        initTheme()
+        observNetworkConnection()
 
-        mNavController =
-            Navigation.findNavController(APP_ACTIVITY_MAIN, R.id.nav_host_fragment_main)
+        mNavController = Navigation.findNavController(APP_ACTIVITY_MAIN, R.id.nav_host_fragment_main)
         navigation_view.setupWithNavController(mNavController)
+    }
+
+    private fun observNetworkConnection(){
+        mViewModel.observConnection{ status ->
+            if(status == StatusConnection.UNAVAILABLE || status == StatusConnection.LOST){
+                connectionChanged = true
+                showSnackBar(tintApp, getString(R.string.internet_is_unavailable), R.color.colorRed)
+            }
+            else if(status == StatusConnection.AVAILABLE && connectionChanged){
+                connectionChanged = false
+                showSnackBar(tintApp, getString(R.string.internet_available), R.color.colorGreen)
+            }
+        }
     }
 
     private fun initFields() {
         APP_ACTIVITY_MAIN = this
+        mViewModel = ViewModelProvider(APP_ACTIVITY_MAIN)[MainActivityViewModel::class.java]
         setSupportActionBar(findViewById(R.id.toolbar))
-        tintApp = findViewById(R.id.tint_app)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         paramsToolbar = toolbar.layoutParams as AppBarLayout.LayoutParams
+        tintApp = binding.tintApp
         paramsToolbar.scrollFlags = 0
         USER = UserModel()
         UID = AUTH.currentUser?.uid!!
-        AppPreferences.getPreferences()
     }
 
     fun initTintApp(typeMessage : String, from : String, view: View){
@@ -73,11 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initTheme() {
-        if (AppPreferences.getTheme() == NIGHT_THEME) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-    }
+
 
     override fun onResume() {
         super.onResume()

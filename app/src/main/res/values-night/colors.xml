@@ -44,4 +44,5 @@
     <color name="colorBackgroundSaved">#2C2C2C</color>
     <color name="colorBackgroundBlacklist">#3C3C3C</color>
     <color name="colorAccountBlacklist">#2C2C2C</color>
+    <color name="colorFilesFeed">#2C2C2C</color>
 </resources>

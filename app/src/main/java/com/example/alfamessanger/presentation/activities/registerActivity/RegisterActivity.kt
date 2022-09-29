@@ -1,10 +1,12 @@
-package com.example.alfamessanger.presentation.activities
+package com.example.alfamessanger.presentation.activities.registerActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.alfamessanger.R
+import com.example.alfamessanger.presentation.activities.mainActivity.MainActivity
 import com.example.alfamessanger.utills.*
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.FirebaseAppCheck
@@ -25,8 +27,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         initFields()
-
-        if (AUTH.currentUser != null){
+        initTheme()
+        if (AUTH.currentUser != null) {
             replaceActivity(this, MainActivity())
         }
 
@@ -41,8 +43,11 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initFields() {
         APP_ACTIVITY_REGISTER = this
-        AUTH = FirebaseAuth.getInstance()
-        DATABASE_REFERENCE = Firebase.database.reference
-        STORAGE_REFERENCE = FirebaseStorage.getInstance().reference
+    }
+
+    private fun initTheme() {
+        if (AppPreferences.getTheme() == NIGHT_THEME) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 }

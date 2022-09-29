@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Hello! cducjiocie"
+        android:singleLine="true"
         android:textSize="15sp"
         android:textColor="@color/statusColor"
          app:layout_constraintStart_toEndOf="@id/your_message"

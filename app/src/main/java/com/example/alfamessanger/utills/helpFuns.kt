@@ -1,11 +1,13 @@
 package com.example.alfamessanger.utills
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -41,24 +43,22 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
-private var time: String = ""
-
 fun showToast(text: String) {
     Toast.makeText(APP_ACTIVITY_REGISTER, text, Toast.LENGTH_SHORT).show()
 }
 
 fun AppCompatActivity.replaceActivity(context: Context, activity: AppCompatActivity) {
+        val intent = Intent(context, activity::class.java)
+        startActivity(intent)
+        //overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        this.finish()
+}
+
+fun Activity.replaceActivity(context: Context, activity: AppCompatActivity) {
     val intent = Intent(context, activity::class.java)
     startActivity(intent)
     //overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     this.finish()
-}
-
-fun Fragment.replaceActivity(context: Context, activity: AppCompatActivity) {
-    val intent = Intent(context, activity::class.java)
-    startActivity(intent)
-    //overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-    APP_ACTIVITY_MAIN.finish()
 }
 
 
@@ -96,6 +96,12 @@ fun resizeImageForChat(height: Int, width: Int, imageView: ImageView) {
             imageView.layoutParams.width = width
         }
 
+    }
+}
+
+fun resizeHeightImageForFeed(height: Int, imageView: ImageView) {
+    if (height > 0) {
+        imageView.layoutParams.height = height
     }
 }
 
@@ -373,4 +379,11 @@ fun copyTextClipBoard(text: String) {
 
 fun getDisplayMetrics(): DisplayMetrics {
     return APP_ACTIVITY_MAIN.resources.displayMetrics
+}
+
+fun createBitmapForSize(uri : Uri?) : Bitmap?{
+    return BitmapFactory.decodeStream(
+        APP_ACTIVITY_MAIN.contentResolver.openInputStream(uri!!),
+        null,
+        null)
 }

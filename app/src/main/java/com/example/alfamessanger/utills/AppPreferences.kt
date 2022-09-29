@@ -9,12 +9,13 @@ object AppPreferences {
     private const val INIT_THEME = "theme"
     private const val INIT_STATUS = "status"
     private const val INIT_GRAFFITI = "graffiti"
+    private const val INIT_ADAPTER = "adapter"
     private const val PREF = "preferences"
 
     private lateinit var mPreferences: SharedPreferences
 
-    fun getPreferences(): SharedPreferences {
-        mPreferences = APP_ACTIVITY_MAIN.getSharedPreferences(PREF, Context.MODE_PRIVATE)
+    fun getPreferences(context: Context): SharedPreferences {
+        mPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
         return mPreferences
     }
 
@@ -40,5 +41,13 @@ object AppPreferences {
 
     fun getGraffiti(): String {
         return mPreferences.getString(INIT_GRAFFITI, "").toString()
+    }
+
+    fun setAdapterMemory(adapter : String) {
+        mPreferences.edit().putString(INIT_ADAPTER, adapter).apply()
+    }
+
+    fun getAdapterMemory(): String {
+        return mPreferences.getString(INIT_ADAPTER, ADAPTER_CHATS).toString()
     }
 }

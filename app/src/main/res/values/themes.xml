@@ -15,9 +15,15 @@
     </style>
 
     <style name="SplashTheme"  parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen_style</item>
+        <item name="android:windowBackground">@drawable/splash_theme_new</item>
         <item name="android:navigationBarColor">#00000000</item>
         <item name="android:statusBarColor">#00000000</item>
+    </style>
+
+    <style name="Theme.App.SplashScreenNew"  parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#414c8d</item>
+        <item name="windowSplashScreenAnimatedIcon" >@drawable/ic_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.AlfaMessanger</item>
     </style>
 
     <style name="toolbarFullScreenStyle" parent="ThemeOverlay.AppCompat.ActionBar">

@@ -2,6 +2,8 @@ package com.example.alfamessanger.domain.usecases
 
 import android.graphics.Bitmap
 import android.net.Uri
+import com.example.alfamessanger.domain.models.ChannelModel
+import com.example.alfamessanger.domain.models.FeedModel
 import com.example.alfamessanger.domain.models.UserModel
 import com.example.alfamessanger.domain.repository.FileStorageRepository
 import com.example.alfamessanger.domain.repository.SingleChatRepository
@@ -22,6 +24,30 @@ class LoadPicUseCase @Inject constructor(
                 loadFileRepository.putUrlToDatabase(path) { url ->
                     function(url)
                 }
+            }
+        }
+    }
+
+    fun loadPicChannel(model: ChannelModel, uri: Uri, path: StorageReference) {
+        loadFileRepository.putFileToStorage(uri, path) {
+            loadFileRepository.getUrlFromStorage(path) { path ->
+                loadFileRepository.putIconUrlToChannel(model, path)
+            }
+        }
+    }
+
+    fun loadPicFeed(channelId : String, model: FeedModel, uri: Uri, path: StorageReference) {
+        loadFileRepository.putFileToStorage(uri, path) {
+            loadFileRepository.getUrlFromStorage(path) { path ->
+                loadFileRepository.putImageFeed(channelId, model, path)
+            }
+        }
+    }
+
+    fun loadFileFeed(channelId : String, model: FeedModel, uri: Uri, path: StorageReference) {
+        loadFileRepository.putFileToStorage(uri, path) {
+            loadFileRepository.getUrlFromStorage(path) { path ->
+                loadFileRepository.putFileFeed(channelId, model, path)
             }
         }
     }
